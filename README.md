@@ -4,7 +4,7 @@ A collection of developer utilities for easier access
 
 > A blazing-fast collection of developer utilities — all running entirely in your browser.  
 > No signups, no backend.
-> https://app.netlify.com/projects/cozy-paprenjak-d54d4d/overview
+> https://cozy-paprenjak-d54d4d.netlify.app/
 ---
 
 ## 🛠️ Tools
