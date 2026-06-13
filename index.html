@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevStash — Free Developer Utilities in Your Browser</title>
+  <meta name="description" content="DevStash is a free, fast collection of 11 developer utilities — JSON formatter, Base64 encoder, regex tester, hash generator, and more. Zero backend, 100% browser-based.">
+  <meta property="og:title" content="DevStash — Free Developer Utilities in Your Browser">
+  <meta property="og:description" content="11 free developer tools — JSON formatter, Base64, URL encoder, regex tester, color converter, diff viewer, hash generator, and more. Zero backend.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devstash.tools">
+  <meta name="theme-color" content="#6c63ff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Hamburger Toggle (mobile) -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2 class="logo">⚡ DevStash</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#home" class="nav-link active" data-section="home">
+        <span class="nav-icon">🏠</span> Home
+      </a>
+      <a href="#json-formatter" class="nav-link" data-section="json-formatter">
+        <span class="nav-icon">{ }</span> JSON Formatter
+      </a>
+      <a href="#base64" class="nav-link" data-section="base64">
+        <span class="nav-icon">🔐</span> Base64 Encoder/Decoder
+      </a>
+      <a href="#url-encoder" class="nav-link" data-section="url-encoder">
+        <span class="nav-icon">🔗</span> URL Encoder/Decoder
+      </a>
+      <a href="#regex-tester" class="nav-link" data-section="regex-tester">
+        <span class="nav-icon">.*</span> Regex Tester
+      </a>
+      <a href="#color-converter" class="nav-link" data-section="color-converter">
+        <span class="nav-icon">🎨</span> Color Converter
+      </a>
+      <a href="#text-diff" class="nav-link" data-section="text-diff">
+        <span class="nav-icon">📝</span> Text Diff Viewer
+      </a>
+      <a href="#hash-generator" class="nav-link" data-section="hash-generator">
+        <span class="nav-icon">#</span> Hash Generator
+      </a>
+      <a href="#word-counter" class="nav-link" data-section="word-counter">
+        <span class="nav-icon">📊</span> Word & Character Counter
+      </a>
+      <a href="#markdown-preview" class="nav-link" data-section="markdown-preview">
+        <span class="nav-icon">📄</span> Markdown Previewer
+      </a>
+      <a href="#unix-timestamp" class="nav-link" data-section="unix-timestamp">
+        <span class="nav-icon">⏱</span> Unix Timestamp Converter
+      </a>
+      <a href="#number-base" class="nav-link" data-section="number-base">
+        <span class="nav-icon">🔢</span> Number Base Converter
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <small>Built with ❤ — Zero backend</small>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main" id="main">
+
+    <!-- HOME -->
+    <section class="section active" id="section-home">
+      <h1>Welcome to DevStash</h1>
+      <p class="section-desc">A blazing-fast collection of developer utilities — all running entirely in your browser. No signups, no servers, no nonsense.</p>
+      <div class="tool-grid">
+        <a href="#json-formatter" class="tool-card" data-goto="json-formatter">
+          <span class="tool-card-icon">{ }</span>
+          <h3>JSON Formatter & Validator</h3>
+          <p>Format, minify, and validate JSON with error highlighting.</p>
+        </a>
+        <a href="#base64" class="tool-card" data-goto="base64">
+          <span class="tool-card-icon">🔐</span>
+          <h3>Base64 Encoder/Decoder</h3>
+          <p>Encode text to Base64 or decode Base64 back to text.</p>
+        </a>
+        <a href="#url-encoder" class="tool-card" data-goto="url-encoder">
+          <span class="tool-card-icon">🔗</span>
+          <h3>URL Encoder/Decoder</h3>
+          <p>Percent-encode or decode URL strings instantly.</p>
+        </a>
+        <a href="#regex-tester" class="tool-card" data-goto="regex-tester">
+          <span class="tool-card-icon">.*</span>
+          <h3>Regex Tester</h3>
+          <p>Test regular expressions with live match highlighting.</p>
+        </a>
+        <a href="#color-converter" class="tool-card" data-goto="color-converter">
+          <span class="tool-card-icon">🎨</span>
+          <h3>Color Converter</h3>
+          <p>Convert between HEX, RGB, and HSL with a live swatch.</p>
+        </a>
+        <a href="#text-diff" class="tool-card" data-goto="text-diff">
+          <span class="tool-card-icon">📝</span>
+          <h3>Text Diff Viewer</h3>
+          <p>Compare two blocks of text and highlight differences line by line.</p>
+        </a>
+        <a href="#hash-generator" class="tool-card" data-goto="hash-generator">
+          <span class="tool-card-icon">#</span>
+          <h3>Hash Generator</h3>
+          <p>Generate SHA-256 hashes using the browser's Web Crypto API.</p>
+        </a>
+        <a href="#word-counter" class="tool-card" data-goto="word-counter">
+          <span class="tool-card-icon">📊</span>
+          <h3>Word & Character Counter</h3>
+          <p>Live count of words, characters, sentences, and reading time.</p>
+        </a>
+        <a href="#markdown-preview" class="tool-card" data-goto="markdown-preview">
+          <span class="tool-card-icon">📄</span>
+          <h3>Markdown Previewer</h3>
+          <p>Side-by-side Markdown editor with live rendered preview.</p>
+        </a>
+        <a href="#unix-timestamp" class="tool-card" data-goto="unix-timestamp">
+          <span class="tool-card-icon">⏱</span>
+          <h3>Unix Timestamp Converter</h3>
+          <p>Convert Unix timestamps to human-readable dates and back.</p>
+        </a>
+        <a href="#number-base" class="tool-card" data-goto="number-base">
+          <span class="tool-card-icon">🔢</span>
+          <h3>Number Base Converter</h3>
+          <p>Convert between binary, octal, decimal, and hexadecimal.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 1. JSON Formatter & Validator -->
+    <section class="section" id="section-json-formatter">
+      <div class="ad-slot"></div>
+      <h2>JSON Formatter & Validator</h2>
+      <p class="section-desc">Format, minify, and validate JSON with syntax error highlighting.</p>
+      <div class="tool-body">
+        <textarea id="jsonInput" class="input-area" placeholder='Paste JSON here, e.g. {"key": "value"}' rows="10"></textarea>
+        <div class="tool-actions">
+          <button onclick="jsonFormat()" class="btn btn-primary">Format</button>
+          <button onclick="jsonMinify()" class="btn">Minify</button>
+          <button onclick="copyOutput('jsonOutput')" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="clearTool('jsonInput','jsonOutput')" class="btn btn-ghost">✕ Clear</button>
+        </div>
+        <div id="jsonError" class="error-msg"></div>
+        <pre id="jsonOutput" class="output-area" data-placeholder="Output will appear here…"></pre>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+    <!-- 2. Base64 Encoder/Decoder -->
+    <section class="section" id="section-base64">
+      <div class="ad-slot"></div>
+      <h2>Base64 Encoder/Decoder</h2>
+      <p class="section-desc">Encode plain text to Base64 or decode Base64 back to text.</p>
+      <div class="tool-body">
+        <textarea id="base64Input" class="input-area" placeholder="Enter text to encode or decode…" rows="6"></textarea>
+        <div class="tool-actions">
+          <button onclick="base64Encode()" class="btn btn-primary">Encode →</button>
+          <button onclick="base64Decode()" class="btn">← Decode</button>
+          <button onclick="copyOutput('base64Output')" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="clearTool('base64Input','base64Output')" class="btn btn-ghost">✕ Clear</button>
+        </div>
+        <div id="base64Error" class="error-msg"></div>
+        <pre id="base64Output" class="output-area" data-placeholder="Output will appear here…"></pre>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+    <!-- 3. URL Encoder/Decoder -->
+    <section class="section" id="section-url-encoder">
+      <div class="ad-slot"></div>
+      <h2>URL Encoder/Decoder</h2>
+      <p class="section-desc">Percent-encode or decode URL strings instantly.</p>
+      <div class="tool-body">
+        <textarea id="urlInput" class="input-area" placeholder='Enter a URL or string, e.g. https://example.com/path?q=hello world' rows="4"></textarea>
+        <div class="tool-actions">
+          <button onclick="urlEncode()" class="btn btn-primary">Encode →</button>
+          <button onclick="urlDecode()" class="btn">← Decode</button>
+          <button onclick="copyOutput('urlOutput')" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="clearTool('urlInput','urlOutput')" class="btn btn-ghost">✕ Clear</button>
+        </div>
+        <div id="urlError" class="error-msg"></div>
+        <pre id="urlOutput" class="output-area" data-placeholder="Output will appear here…"></pre>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+    <!-- 4. Regex Tester -->
+    <section class="section" id="section-regex-tester">
+      <div class="ad-slot"></div>
+      <h2>Regex Tester</h2>
+      <p class="section-desc">Test regular expressions with live match highlighting.</p>
+      <div class="tool-body">
+        <div class="input-row">
+          <input id="regexPattern" class="input-field" type="text" placeholder="Regex pattern (e.g. \d+)" oninput="regexTest()">
+          <input id="regexFlags" class="input-field input-field-sm" type="text" value="gi" placeholder="Flags" oninput="regexTest()">
+        </div>
+        <textarea id="regexInput" class="input-area" placeholder="Enter test string…" rows="6" oninput="regexTest()"></textarea>
+        <div class="tool-actions">
+          <button onclick="regexTest()" class="btn btn-primary">Test</button>
+          <button onclick="copyOutput('regexOutput')" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="clearTool('regexInput','regexOutput');document.getElementById('regexPattern').value='';document.getElementById('regexFlags').value='gi'" class="btn btn-ghost">✕ Clear</button>
+        </div>
+        <div id="regexError" class="error-msg"></div>
+        <pre id="regexOutput" class="output-area" data-placeholder="Matches will be highlighted here…"></pre>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+    <!-- 5. Color Converter -->
+    <section class="section" id="section-color-converter">
+      <div class="ad-slot"></div>
+      <h2>Color Converter</h2>
+      <p class="section-desc">Convert between HEX, RGB, and HSL with a live color swatch.</p>
+      <div class="tool-body">
+        <div class="input-row">
+          <input id="colorHex" class="input-field" type="text" placeholder="#6c63ff" value="#6c63ff" maxlength="7" oninput="convertColor()">
+          <input id="colorPicker" type="color" value="#6c63ff" class="color-pick">
+        </div>
+        <div class="tool-actions">
+          <button onclick="convertColor()" class="btn btn-primary">Convert</button>
+          <button onclick="copyOutput('colorOutput')" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="document.getElementById('colorHex').value='';document.getElementById('colorPicker').value='#6c63ff';document.getElementById('colorOutput').innerHTML='';document.getElementById('colorSwatch').style.background='transparent'" class="btn btn-ghost">✕ Clear</button>
+        </div>
+        <div id="colorSwatch" class="color-swatch" style="background:#6c63ff"></div>
+        <pre id="colorOutput" class="output-area" data-placeholder="RGB and HSL values will appear here…"></pre>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+    <!-- 6. Text Diff Viewer -->
+    <section class="section" id="section-text-diff">
+      <div class="ad-slot"></div>
+      <h2>Text Diff Viewer</h2>
+      <p class="section-desc">Compare two blocks of text and highlight differences line by line.</p>
+      <div class="tool-body">
+        <div class="diff-grid">
+          <div>
+            <label class="field-label">Original</label>
+            <textarea id="diffInputA" class="input-area" placeholder="Paste original text…" rows="10" oninput="diffCompare()"></textarea>
+          </div>
+          <div>
+            <label class="field-label">Modified</label>
+            <textarea id="diffInputB" class="input-area" placeholder="Paste modified text…" rows="10" oninput="diffCompare()"></textarea>
+          </div>
+        </div>
+        <div class="tool-actions">
+          <button onclick="diffCompare()" class="btn btn-primary">Compare</button>
+          <button onclick="copyOutput('diffOutput')" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="clearTool('diffInputA');clearTool('diffInputB','diffOutput')" class="btn btn-ghost">✕ Clear</button>
+        </div>
+        <div id="diffOutput" class="output-area diff-output"></div>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+    <!-- 7. Hash Generator -->
+    <section class="section" id="section-hash-generator">
+      <div class="ad-slot"></div>
+      <h2>Hash Generator</h2>
+      <p class="section-desc">Generate SHA-256 hashes using the browser's native Web Crypto API.</p>
+      <div class="tool-body">
+        <textarea id="hashInput" class="input-area" placeholder="Enter text to hash…" rows="6"></textarea>
+        <div class="tool-actions">
+          <button onclick="generateHash()" class="btn btn-primary">Generate SHA-256</button>
+          <button onclick="copyOutput('hashOutput')" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="clearTool('hashInput','hashOutput')" class="btn btn-ghost">✕ Clear</button>
+        </div>
+        <pre id="hashOutput" class="output-area" data-placeholder="SHA-256 hash will appear here…"></pre>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+    <!-- 8. Word & Character Counter -->
+    <section class="section" id="section-word-counter">
+      <div class="ad-slot"></div>
+      <h2>Word & Character Counter</h2>
+      <p class="section-desc">Live count of words, characters, sentences, and estimated reading time.</p>
+      <div class="tool-body">
+        <textarea id="counterInput" class="input-area" placeholder="Start typing to count…" rows="10" oninput="countWords()"></textarea>
+        <div class="counter-stats" id="counterStats">
+          <div class="stat"><span class="stat-val" id="statChars">0</span><span class="stat-label">Characters</span></div>
+          <div class="stat"><span class="stat-val" id="statCharsNoSpace">0</span><span class="stat-label">Chars (no space)</span></div>
+          <div class="stat"><span class="stat-val" id="statWords">0</span><span class="stat-label">Words</span></div>
+          <div class="stat"><span class="stat-val" id="statSentences">0</span><span class="stat-label">Sentences</span></div>
+          <div class="stat"><span class="stat-val" id="statLines">0</span><span class="stat-label">Lines</span></div>
+          <div class="stat"><span class="stat-val" id="statReading">0 min</span><span class="stat-label">Reading Time</span></div>
+        </div>
+        <div class="tool-actions">
+          <button onclick="copyCounterStats()" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="clearTool('counterInput');countWords()" class="btn btn-ghost">✕ Clear</button>
+        </div>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+    <!-- 9. Markdown Previewer -->
+    <section class="section" id="section-markdown-preview">
+      <div class="ad-slot"></div>
+      <h2>Markdown Previewer</h2>
+      <p class="section-desc">Side-by-side Markdown editor with live rendered preview.</p>
+      <div class="tool-body">
+        <div class="diff-grid">
+          <div>
+            <label class="field-label">Markdown Input</label>
+            <textarea id="mdInput" class="input-area" placeholder="# Hello World
+
+Write some **Markdown** here…" rows="14" oninput="renderMarkdown()"></textarea>
+          </div>
+          <div>
+            <label class="field-label">Preview</label>
+            <div id="mdOutput" class="output-area md-preview"></div>
+          </div>
+        </div>
+        <div class="tool-actions">
+          <button onclick="copyOutput('mdOutput')" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="document.getElementById('mdInput').value='';renderMarkdown()" class="btn btn-ghost">✕ Clear</button>
+        </div>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+    <!-- 10. Unix Timestamp Converter -->
+    <section class="section" id="section-unix-timestamp">
+      <div class="ad-slot"></div>
+      <h2>Unix Timestamp Converter</h2>
+      <p class="section-desc">Convert Unix timestamps to human-readable dates and vice versa.</p>
+      <div class="tool-body">
+        <div class="input-row">
+          <input id="unixNow" class="input-field" type="text" placeholder="Current timestamp…" readonly>
+          <button onclick="document.getElementById('unixNow').value=Math.floor(Date.now()/1000)" class="btn">Now</button>
+        </div>
+        <label class="field-label">Unix Timestamp (seconds)</label>
+        <input id="unixInput" class="input-field" type="text" placeholder="e.g. 1700000000">
+        <div class="tool-actions">
+          <button onclick="unixToDate()" class="btn btn-primary">→ Convert to Date</button>
+        </div>
+        <label class="field-label">Human-Readable Date</label>
+        <input id="dateInput" class="input-field" type="datetime-local" step="1">
+        <div class="tool-actions">
+          <button onclick="dateToUnix()" class="btn btn-primary">← Convert to Timestamp</button>
+          <button onclick="copyOutput('unixOutput')" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="clearTool('unixInput');document.getElementById('dateInput').value='';setOutput('unixOutput','');clearError('unixError')" class="btn btn-ghost">✕ Clear</button>
+        </div>
+        <div id="unixError" class="error-msg"></div>
+        <pre id="unixOutput" class="output-area" data-placeholder="Conversion result will appear here…"></pre>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+    <!-- 11. Number Base Converter -->
+    <section class="section" id="section-number-base">
+      <div class="ad-slot"></div>
+      <h2>Number Base Converter</h2>
+      <p class="section-desc">Convert between binary, octal, decimal, and hexadecimal.</p>
+      <div class="tool-body">
+        <div class="input-row">
+          <input id="numBaseInput" class="input-field" type="text" placeholder="Enter a number…">
+          <select id="numBaseFrom" class="input-field input-field-sm">
+            <option value="10" selected>Decimal</option>
+            <option value="2">Binary</option>
+            <option value="8">Octal</option>
+            <option value="16">Hexadecimal</option>
+          </select>
+        </div>
+        <div class="tool-actions">
+          <button onclick="convertBase()" class="btn btn-primary">Convert</button>
+          <button onclick="copyOutput('numBaseOutput')" class="btn btn-ghost">📋 Copy</button>
+          <button onclick="document.getElementById('numBaseInput').value='';document.getElementById('numBaseOutput').innerHTML=''" class="btn btn-ghost">✕ Clear</button>
+        </div>
+        <div id="numBaseError" class="error-msg"></div>
+        <pre id="numBaseOutput" class="output-area" data-placeholder="Converted values will appear here…"></pre>
+      </div>
+      <div class="ad-slot"></div>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
