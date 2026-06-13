@@ -66,3 +66,13 @@ Static site — deploy anywhere for free:
 - Web Crypto API for SHA-256 hashing
 
 No build tools. No package.json. Open the file, it works.
+
+---
+
+## 💖 Support My Work
+
+If you find this tool useful, feel free to buy me a coffee or commission me for any custom tools you need built.
+
+🔗 **[Support me on Patreon](https://www.patreon.com/c/MajedBenmansour?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink)**
+
+> ℹ️ **Note:** Due to regional payment restrictions, Patreon is currently my only reliable gateway for international support. One-time donations are completely welcome—feel free to subscribe and cancel right after.
